@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <?php
+
+
+
+    if (isset($message)) {
+        // echo "<pre>";
+        // print_r($message);
+        $str = $message->info_url;
+        $message = $message->details;
+        $key =  $message->key;
+        $key =  trim($key, "/books");
+
+        // echo $key;
+        // echo "<pre>";
+        // print_r($message);
+    }
+
+    ?>
+
+    <div>
+        <img class="img-fluid img-responsive" src="https://covers.openlibrary.org/b/olid/<?php echo $key;  ?>-M.jpg" alt="">
+    </div>
+
+
+
+    <div>
+
+
+
+        <h3>title : <?php echo $message->title; ?></h3>
+    </div>
+    <div>
+        <h3>number_of_pages : <?php echo  $message->number_of_pages; ?></h3>
+    </div>
+
+    <div>
+        <h3>publish_date : <?php echo $message->publish_date; ?></h3>
+    </div>
+    <div>
+        <?php
+
+        if (isset($message->identifiers)) {
+            $obj = $message->identifiers;
+            $gid = $obj->google[0];
+
+
+
+            if (isset($gid)) {
+                $arr = explode("/", $str);
+                $slug = $arr[count($arr) - 1];
+                // print_r($slug)
+                echo $slug;
+                echo '<a href="https://www.google.co.in/books/edition/' . $slug . "/" . $gid . '?hl=en">google</a>';
+            }
+        }
+
+
+        ?>
+
+    </div>
+
+</body>
+
+</html>

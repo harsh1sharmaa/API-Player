@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <nav class="nav">
+            <h2>current info</h2>
+        </nav>
+
+
+        <div class="container">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+
+                        <!-- <th scope="col">get info</th> -->
+                        <!-- <th scope="col">btn</th> -->
+
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <?php
+
+                    if (isset($message)) {
+                        $arr = $message;
+
+
+                        //                     $str .= '<tr>
+
+                        // <td>' . $message[$i]->country . ' </td>
+                        // <td>' . $message[$i]->name . '</td>
+
+
+
+                        // </tr>';
+
+
+
+
+                        $str = "";
+                        foreach ($arr as $key => $value) {
+
+                            if ($key != 'condition') {
+
+                                $str .= '<tr>
+                                        
+                                <td>' . $key . ' </td>
+                                <td>' . $value . '</td>
+                                </tr>';
+                            }
+
+
+                            // print "$key => $value\n";
+                            // echo "<br>";
+                        }
+
+                        echo $str . '</table>';
+                    }
+
+
+
+                    ?>
+
+        </div>
+
+</body>
+
+</html>

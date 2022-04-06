@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <?php
+
+    if (isset($message)) {
+
+        $data1 = $message->location;
+        $data2 = $message->current;
+
+
+    }
+
+
+
+
+
+    ?>
+
+   
+    <a href="/wether/current?location=<?php echo $this->request->getQuery('location') ?> " class="btn btn-warning">current</a>
+    <a href="/wether/forecast?location=<?php echo $this->request->getQuery('location')  ?> " class="btn btn-warning">Forecast</a>
+    <a href="/wether/history?location=<?php echo  $this->request->getQuery('location')  ?> " class="btn btn-warning">history</a>
+    <a href="/wether/timezone?location=<?php echo $this->request->getQuery('location') ?> " class="btn btn-warning">timezone</a>
+    <a href="/wether/sports?location=<?php echo  $this->request->getQuery('location') ?> " class="btn btn-warning">sports</a>
+    <a href="/wether/astronomy?location=<?php echo  $this->request->getQuery('location') ?> " class="btn btn-warning">astronomy</a>
+    <a href="/wether/airquality?location=<?php echo  $this->request->getQuery('location') ?> " class="btn btn-warning">Air Quality</a>
+
+ 
+
+</body>
+
+</html>

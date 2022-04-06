@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <?php
+ 
+
+        // echo "gfdhfg";
+        // echo "<pre>";
+        // print_r($message);
+        // die();
+
+        for ($i = 0; $i < count($message); $i++) {
+
+
+            $date = $message[$i]->date;
+            $forecast = $message[$i]->day;
+            // echo $forecast;
+            // die;
+            // echo "<pre>";
+            // print_r( $forecast);
+
+            $maxtemp_c = $forecast->maxtemp_c;
+            $maxtemp_f = $forecast->maxtemp_f;
+            $mintemp_c = $forecast->mintemp_c;
+            $mintemp_f = $forecast->mintemp_f;
+            $maxwind_mph = $forecast->maxwind_mph;
+            $avghumidity = $forecast->avghumidity;
+            $daily_chance_of_rain = $forecast->daily_chance_of_rain;
+
+            $str .= '<section class="vh-100" style="background-color: #f5f6f7;">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-10 col-lg-8 col-xl-6">
+      
+              <div class="card bg-dark text-white" style="border-radius: 40px;">
+                <div class="bg-image" style="border-radius: 35px;">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/draw1.webp"
+                    class="card-img"
+                    alt="weather"
+                  />
+                  <div class="mask" style="background-color: rgba(190, 216, 232, .5);"></div>
+                </div>
+                <div class="card-img-overlay text-dark p-5">
+                  <p class="mb-0"> <strong>Date  =></strong>' . $date . '</p>
+                  <p class="mb-0"> <strong>max temp in c =></strong>' . $maxtemp_c . '</p>
+                  <p class=" my-3"> <strong>max temp in f =></strong>' . $maxtemp_f . '</p>
+                  <p class=" my-3"> <strong>min temp in c =></strong>' . $mintemp_c . '</p>
+                  <p class=" my-3"> <strong>min temp in f =></strong>' . $mintemp_f . '</p>
+                  <p class="mb-2">Feels Like: <strong>Avg Humidity' . $$avghumidity . '</strong></p>
+                  <p class="mb-2">Feels Like: <strong>Chance of rain ' . $daily_chance_of_rain . '%</strong></p>
+               
+                </div>
+              </div>
+      
+            </div>
+          </div>
+        </div>
+      </section>';
+        }
+
+        echo $str;
+        // die;
+    
+
+
+
+
+    ?>
+
+
+
+
+    <div class=" container">
+
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div>
+
+
+<?php
+
+
+if (isset($message)) {
+
+    $message = $message->astronomy->astro;
+
+
+    // echo "<pre>";
+
+    // print_r($message);
+
+
+    $str = '
+          <div">
+            
+          <li class="list-group-item list-group-item-primary">Sunrise -->'.$message->sunrise.'</li>
+          <li class="list-group-item list-group-item-primary">Sunset -->'.$message->sunset.'</li>
+          <li class="list-group-item list-group-item-primary">Moonrise--> '.$message->moonrise.'</li>
+          <li class="list-group-item list-group-item-primary">Moonset--> '.$message->moonset.'</li>
+          <li class="list-group-item list-group-item-primary">Moon Phase--> '.$message->moon_phase.'</li>
+       
+          </div>';
+
+    echo $str;
+    // die;
+
+
+
+
+}
+
+
+
+
+?>
+</div>
+    
+</body>
+</html>

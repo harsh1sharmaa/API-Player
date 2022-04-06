@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="" method="post">
+        <input type="text" name="name">
+        <input type="submit" name="submit" value="getlocation">
+    </form>
+
+    <div class="container">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Country name</th>
+                    <th scope="col">city name</th>
+                    <th scope="col">get info</th>
+                    <!-- <th scope="col">btn</th> -->
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <?php
+                if (isset($message)) {
+
+
+                    $str = "";
+                    for ($i = 0; $i < count($message); $i++) {
+
+
+                        $str .= '<tr>
+                    
+                        <td>' . $message[$i]->country . ' </td>
+                        <td>' . $message[$i]->name . '</td>
+                        <td><a href="/wether/info?location=' . $message[$i]->name . '">get detail</a></td>
+                        
+                        
+                         </tr>';
+                    }
+
+                    echo $str . '</tbody>';
+                }
+
+
+
+                ?>
+
+
+</body>
+
+</html>
