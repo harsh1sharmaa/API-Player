@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
 
-<?php
+    <?php
 
-if(isset($message)){
+    if (isset($message)) {
 
-    $arr=$message;
+        $arr = $message;
 
-    $count=1;
+        $count = 1;
 
-    for ($i = 0; $i < count($arr); $i++) {
+        $str = '';
 
-        $obj=$arr[$i];
-        echo $count++." -> ";
-        foreach ($obj as $key => $value) {
-            print "$key => $value\n";
-            echo "<br>";
+        for ($i = 0; $i < count($arr); $i++) {
+
+            $obj = $arr[$i];
+
+            $str .= ' <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+            </tr>
+        </thead>
+        <tbody>';
+            foreach ($obj as $key => $value) {
+                $str .= '<tr>
+                                        
+            <td>' . $key . ' </td>
+            <td>' . $value . '</td>
+            </tr>';
+            }
+            $str .= '</table>';
         }
-        echo "<br>";
-        echo "<br>";
-     
 
+        echo $str;
     }
 
-    
-}
 
+    ?>
 
-?>
-    
 </body>
+
 </html>
