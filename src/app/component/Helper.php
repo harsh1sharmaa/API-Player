@@ -3,6 +3,7 @@
 
 use Phalcon\Mvc\Controller;
 use Phalcon\Http\Response;
+use GuzzleHttp\Client;
 
 
 class Helper extends Controller
@@ -17,8 +18,6 @@ class Helper extends Controller
         switch ($page) {
 
             case 'astronomy':
-
-
                 $url = 'http://api.weatherapi.com/v1/astronomy.json?key=0bab7dd1bacc418689b143833220304&q=' . $location;
                 $data =  $this->getdatahelper($url);
                 $data = $data;
@@ -49,7 +48,15 @@ class Helper extends Controller
             case 'sports':
                 $url = 'http://api.weatherapi.com/v1/sports.json?key=0bab7dd1bacc418689b143833220304&q=' . $location;
                 $data =  $this->getdatahelper($url);
-                $data = $data->football;
+                
+                foreach ($data as $key => $value) {
+                    if (count($data->$key) > 0) {
+                      
+                        return array($data->$key,$key);
+                        
+                    }
+                }
+              
                 return $data;
 
                 break;
@@ -90,25 +97,37 @@ class Helper extends Controller
 
     public function getdatahelper($url)
     {
-        $ch = curl_init();
-        //grab URL and pass it to the variable.
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_URL, $url);
-
-        $data = curl_exec($ch);
-        // echo $data;
-
-        $arr = json_decode($data);
-        // echo "<pre>";
-        // print_r($arr->current->air_quality);
-        // die;
-        if (isset($arr->error)) {
-
-            print_r($arr->error->message);
-            die;
-        }
-
-
+        /***********************************************Guzzle*************************/ 
+        $client = new Client();
+        $response = $client->request('GET', $url);
+        $arr= json_decode($response->getBody()->getContents());
         return $arr;
+     
+
+
+
+
+
+        /**********************************Curl*************************** */
+        // $ch = curl_init();
+        // //grab URL and pass it to the variable.
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        // curl_setopt($ch, CURLOPT_URL, $url);
+
+        // $data = curl_exec($ch);
+        // // echo $data;
+
+        // $arr = json_decode($data);
+        // // echo "<pre>";
+        // // print_r($arr);
+        // // die;
+        // if (isset($arr->error)) {
+
+        //     print_r($arr->error->message);
+        //     die;
+        // }
+
+
+        // return $arr;
     }
 }

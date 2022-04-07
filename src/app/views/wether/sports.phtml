@@ -14,8 +14,12 @@
     <?php
 
     if (isset($message)) {
+        //   echo "<pre>";
+        //         print_r($message);
+        //         die;
 
-        $arr = $message;
+        $arr = $message[0];
+        $type = $message[1];
 
         $count = 1;
 
@@ -25,7 +29,8 @@
 
             $obj = $arr[$i];
 
-            $str .= ' <table class="table table-dark table-striped">
+            $str .= ' 
+            <li class="list-group-item list-group-item-primary">' . $type . '</li><table class="table table-dark table-striped">
         <thead>
             <tr>
             </tr>
